@@ -1,0 +1,26 @@
+{
+  "name": "react-components",
+  "version": "1.0.0",
+  "description": "common UI components library",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kagol/react-components.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "chart",
+    "table",
+    "date-picker"
+  ],
+  "author": "kagol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kagol/react-components/issues"
+  },
+  "homepage": "https://github.com/kagol/react-components#readme"
+}
