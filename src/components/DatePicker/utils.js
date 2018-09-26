@@ -21,10 +21,9 @@ export function getWeekArr(date, num, showOtherMonth, format) {
     for(let day=firstDay;day<lastDay;day++){
         let weekItem = moment(dateMoment).add(day, 'days');
         let formatWeekItem = weekItem;
-        if(format){
-            formatWeekItem = weekItem.format(format);
-        }
-        console.log('formatWeekItem:', formatWeekItem);
+        // if(format){
+        //     formatWeekItem = weekItem.format(format);
+        // }
         if(!showOtherMonth && thisMonth !== formatWeekItem.format('M')){
             formatWeekItem = null;
         }
@@ -55,15 +54,8 @@ export function getFirstDayOfMonth(date, monthNum, yearNum) {
  * @param {某个日期} date 
  */
 export function getCalendarArr(date, monthNum=0, yearNum=0, showOtherMonth=true) {
-    let dateMoment = date;
-    if(!moment.isMoment(date)){
-        dateMoment = moment(date);
-    }
-    const thisMonth = dateMoment.format('M');
-    console.log('thisMonth:', thisMonth);
     let calendarArr = [];
-    let firstDayOfMonth = getFirstDayOfMonth(dateMoment, monthNum, yearNum);
-    console.log('firstDayOfMonth:', firstDayOfMonth);
+    let firstDayOfMonth = getFirstDayOfMonth(date, monthNum, yearNum);
     for(let row=0;row<DATE_ROW_COUNT;row++){
         let rowArr = getWeekArr(firstDayOfMonth, row, showOtherMonth);
         calendarArr.push(rowArr);

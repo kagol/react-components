@@ -11,7 +11,6 @@ class DatePicker extends Component {
         const { onChange } = this.props;
         const date = moment().format(DEFAULT_FORMAT);
         const calendarTable = getCalendarArr(date, monthCount, yearCount, showOtherMonth);
-        console.log('calendarTable:', calendarTable);
         return (
             <table className="calendar-table">
                 <thead>
@@ -50,23 +49,29 @@ class DatePicker extends Component {
         const currentMonthCount = this.state.monthCount;
         const currentYearCount = this.state.yearCount;
         const date = moment().add(currentYearCount, 'years').add(currentMonthCount, 'months');
-        const year = date.format('YYYY') + '年';
-        const month = date.format('M') + '月';
+        const year = date.format('YYYY');// + '年';
+        const month = date.format('M');// + '月';
+        console.log('date:', date);
         return (
-            <div>
-                <span onClick={() => {this.setState({yearCount: currentYearCount-1})}}>上一年</span>
-                <span onClick={() => {this.setState({monthCount: currentMonthCount-1})}}>上一月</span>
-                <span onClick={() => {console.log('year:', year);}}>{year} </span>
-                <span onClick={() => {console.log('month:', month);}}>{month}</span>
-                <span onClick={() => {this.setState({monthCount: currentMonthCount+1})}}>下一月</span>
-                <span onClick={() => {this.setState({yearCount: currentYearCount+1})}}>下一年</span>
+            <div className="calendar-operation-bar">
+                <div className="block-last">
+                    <span className="btn-last-year" title="上一年" onClick={() => {this.setState({yearCount: currentYearCount-1})}}></span>
+                    <span className="btn-last-month" title="上一月" onClick={() => {this.setState({monthCount: currentMonthCount-1})}}></span>
+                </div>
+                <div className="block-current">
+                    <span onClick={() => {console.log('year:', year);}}>{year + '年'} </span>
+                    <span onClick={() => {console.log('month:', month);}}>{month + '月'}</span>
+                </div>
+                <div className="block-next">
+                    <span className="btn-next-month" title="下一月" onClick={() => {this.setState({monthCount: currentMonthCount+1})}}></span>
+                    <span className="btn-next-year" title="下一年" onClick={() => {this.setState({yearCount: currentYearCount+1})}}></span>
+                </div>
             </div>
         );
     }
     render() {
         const monthCount = this.state.monthCount;
         const yearCount = this.state.yearCount;
-        console.log('selectedDate:', this.state.selectedDate);
         return (
             <div className="calendar-panel">
                 <div className="calendar-header">{this.renderCalendarHeader()}</div>
