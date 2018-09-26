@@ -5,13 +5,15 @@ import './style.css';
 
 class DatePicker extends Component {
     state = {
-        monthCount: 0
+        monthCount: 0, yearCount: 0, selectedDate: null
     }
-    renderCalendarTable(month) {
+    renderCalendarTable(monthCount, yearCount, showOtherMonth) {
+        const { onChange } = this.props;
         const date = moment().format(DEFAULT_FORMAT);
-        const calendarTable = getCalendarArr(date, month);
+        const calendarTable = getCalendarArr(date, monthCount, yearCount, showOtherMonth);
+        console.log('calendarTable:', calendarTable);
         return (
-            <table>
+            <table className="calendar-table">
                 <thead>
                     <tr>
                         {WEEK_ARR.map((item, key) => <th key={key}>{item}</th>)}
@@ -19,14 +21,26 @@ class DatePicker extends Component {
                 </thead>
                 <tbody>
                     {calendarTable.map((week, weekKey) => <tr key={weekKey}>{week.map((day, dayKey) => 
-                        <td key={dayKey}>
-                            <span title={day.format(DEFAULT_FORMAT)} onClick={() => {
-                                console.log('current date format:', calendarTable[weekKey][dayKey].format(DEFAULT_FORMAT));
-                                console.log('current date:', calendarTable[weekKey][dayKey]);
-                            }}>
-                                {day.format('D')}
-                            </span>
-                        </td>
+                        {
+                            const formatDay = day && day.format(DEFAULT_FORMAT);
+                            const selectedDate = this.state.selectedDate;
+                            const isToday = moment(date).isSame(formatDay);
+                            const isSelectedDate = moment(selectedDate).isSame(formatDay);
+                            const isOtherMonth =( moment().add(yearCount, 'years').add(monthCount, 'months') ).format('M') !== (day && day.format('M'));
+                            let className = '';
+                            if(isToday) className += ' calendar-today';
+                            if(isSelectedDate) className += ' calendar-selected-date';
+                            if(isOtherMonth) className += ' calendar-other-month';
+                            return (<td key={dayKey} className={className}>
+                                <div className="calendar-date" title={formatDay} onClick={() => {
+                                    const selectedDate = calendarTable[weekKey][dayKey];
+                                    this.setState({selectedDate: selectedDate.format(DEFAULT_FORMAT)})
+                                    onChange(selectedDate);
+                                }}>
+                                    {day && day.format('D')}
+                                </div>
+                            </td>)
+                        }
                     )}</tr>)}
                 </tbody>
             </table>
@@ -34,22 +48,30 @@ class DatePicker extends Component {
     }
     renderCalendarHeader() {
         const currentMonthCount = this.state.monthCount;
-        const date = moment().add(currentMonthCount, 'months');
+        const currentYearCount = this.state.yearCount;
+        const date = moment().add(currentYearCount, 'years').add(currentMonthCount, 'months');
         const year = date.format('YYYY') + '年';
         const month = date.format('M') + '月';
         return (
             <div>
+                <span onClick={() => {this.setState({yearCount: currentYearCount-1})}}>上一年</span>
                 <span onClick={() => {this.setState({monthCount: currentMonthCount-1})}}>上一月</span>
-                {year} {month}
+                <span onClick={() => {console.log('year:', year);}}>{year} </span>
+                <span onClick={() => {console.log('month:', month);}}>{month}</span>
                 <span onClick={() => {this.setState({monthCount: currentMonthCount+1})}}>下一月</span>
+                <span onClick={() => {this.setState({yearCount: currentYearCount+1})}}>下一年</span>
             </div>
         );
     }
     render() {
+        const monthCount = this.state.monthCount;
+        const yearCount = this.state.yearCount;
+        console.log('selectedDate:', this.state.selectedDate);
         return (
-            <div>
-                {this.renderCalendarHeader()}
-                {this.renderCalendarTable(this.state.monthCount)}
+            <div className="calendar-panel">
+                <div className="calendar-header">{this.renderCalendarHeader()}</div>
+                <div className="calendar-body">{this.renderCalendarTable(monthCount, yearCount)}</div>
+                {/* <div className="calendar-body">{this.renderCalendarTable(monthCount, yearCount, false)}</div> */}
             </div>
         )
     }

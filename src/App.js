@@ -5,8 +5,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        React Components
-        <DatePicker />
+        <DatePicker onChange={(selectedDate) => {
+          console.log('selectedDate:', selectedDate);
+          console.log('selectedDate format:', selectedDate.format('YYYY-MM-DD'));
+        }} />
       </div>
     )
   }
