@@ -4,8 +4,11 @@ import { getCalendarArr, WEEK_ARR, DEFAULT_FORMAT } from './utils';
 import './style.css';
 
 class DatePicker extends Component {
-    state = {
-        monthCount: 0, yearCount: 0, selectedDate: null
+    constructor(props) {
+        super(props);
+        this.state = {
+            monthCount: 0, yearCount: 0, selectedDate: props.selectedDate || null
+        }
     }
     renderCalendarTable(monthCount, yearCount, showOtherMonth) {
         const { onChange } = this.props;
@@ -51,7 +54,7 @@ class DatePicker extends Component {
         const date = moment().add(currentYearCount, 'years').add(currentMonthCount, 'months');
         const year = date.format('YYYY');// + '年';
         const month = date.format('M');// + '月';
-        console.log('date:', date);
+        // console.log('date:', date);
         return (
             <div className="calendar-operation-bar">
                 <div className="block-last">

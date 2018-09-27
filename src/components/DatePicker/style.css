@@ -1,18 +1,5 @@
 .calendar-panel{ 
     width: 280px;
-    /* position: relative;
-    outline: none;
-    width: 280px;
-    border: 1px solid #fff;
-    list-style: none;
-    font-size: 14px;
-    text-align: left;
-    background-color: #fff;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    background-clip: padding-box;
-    line-height: 1.5; */
 }
 
 .calendar-body{
