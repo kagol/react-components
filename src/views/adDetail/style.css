@@ -1,0 +1,9 @@
+.header{  width: 100%; background: #fff; z-index: 2; box-shadow: 0 2px 3px rgba(0, 0, 0, .2); }
+.content{ margin: 90px 10px 10px 10px; }
+.chart-detail-block{
+    display: flex; 
+}
+.chart-block, .detail-block, .table-block{ background: #fff; padding: 20px; }
+.table-block{ margin-top: 10px; }
+.chart-block{ width: 100%; }
+.detail-block{ width: 340px; margin-left: 10px; }

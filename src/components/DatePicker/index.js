@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Popover from 'react-tiny-popover';
 import moment from 'moment';
 import { getCalendarArr, WEEK_ARR, DEFAULT_FORMAT } from './utils';
 import './style.css';
 
-class DatePicker extends Component {
+export class Calendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -82,6 +83,40 @@ class DatePicker extends Component {
                 {/* <div className="calendar-body">{this.renderCalendarTable(monthCount, yearCount, false)}</div> */}
             </div>
         )
+    }
+}
+
+class DatePicker extends Component {
+    state = {
+      isPopoverOpen: false, selectedDate: null
+    }
+    render() {
+        const isPopoverOpen = this.state.isPopoverOpen;
+        const selectedDate = this.state.selectedDate;
+        const { onChange } = this.props;
+        return (
+            <Popover
+                isOpen={isPopoverOpen}
+                position={'bottom'}
+                padding={10}
+                disableReposition 
+                onClickOutside={() => this.setState({ isPopoverOpen: false })}
+                content={({ position, nudgedLeft, nudgedTop, targetRect, popoverRect }) => (
+                <div className="calendar-container">
+                    <Calendar onChange={(selectedDate) => {
+                        // console.log('selectedDate:', selectedDate);
+                        // console.log('selectedDate format:', selectedDate.format('YYYY-MM-DD'));
+                        this.setState({isPopoverOpen: false, selectedDate: selectedDate});
+                        onChange(selectedDate);
+                    }} selectedDate={selectedDate} />
+                </div>
+                )}
+            >
+                <div style={{width: 280}} onClick={() => this.setState({ isPopoverOpen: !isPopoverOpen })}>
+                    Click me! current date: { selectedDate && selectedDate.format('YYYY-MM-DD')}
+                </div>
+            </Popover>
+        );
     }
 }
 

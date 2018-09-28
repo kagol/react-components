@@ -1,0 +1,4 @@
+.ant-btn{ cursor: pointer; font-size: 14px; border: solid 1px #d9d9d9; border-radius: 4px; height: 32px; }
+.ant-btn.flat{ border: 0; box-shadow: none; }
+.ant-btn.flat:focus{ outline: none; }
+.ant-btn.flat:hover{ color: #40a9ff; }

@@ -1,0 +1,2 @@
+.table-operation-bar{ display: flex; justify-content: flex-end; align-items: center; margin-bottom: 20px; }
+.table-operation-bar .select-table-column{ width: 180px; margin-right: 10px; }
