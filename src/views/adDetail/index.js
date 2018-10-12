@@ -3,6 +3,8 @@ import Header from './Header';
 import ChartBlock from './ChartBlock';
 import DetailBlock from './DetailBlock';
 import TableBlock from './TableBlock';
+import Share from '@tencent/ppo-fe/lib/Share';
+import ImageZoomin from '@tencent/ppo-fe/lib/ImageZoomin';
 import './style.css';
 
 class AdDetail extends Component {
@@ -17,6 +19,10 @@ class AdDetail extends Component {
                     </div>
                     <TableBlock />
                 </div>
+                {/* <div>
+                    <Share url="https://ads.app.wechat.com/" title="TIA" />
+                    <ImageZoomin src={"http://pic-1252507790.file.myqcloud.com/96321943832412_0.jpg"} />
+                </div> */}
             </div>
         );
     }

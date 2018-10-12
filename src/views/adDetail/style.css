@@ -1,3 +1,5 @@
+@import '~@tencent/ppo-fe/lib/styles/component.css';
+
 .header{  width: 100%; background: #fff; z-index: 2; box-shadow: 0 2px 3px rgba(0, 0, 0, .2); }
 .content{ margin: 90px 10px 10px 10px; }
 .chart-detail-block{

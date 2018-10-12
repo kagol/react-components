@@ -7,14 +7,15 @@ import './style.css';
 
 class DetailBlock extends Component {
     render() {
+        const { onEditClick, onDeleteClick, onPreviewClick } = this.props;
         return (
             <div className="detail-block">
                 <div className="detail-header">
                     <div className="detail-title">Ad detail</div>
                     <div className="detail-operation">
-                        <Button icon="edit" className="flat" onClick={() => { console.log('You click "Edit" button'); }}>Edit</Button>
-                        <Button icon="delete" className="flat" onClick={() => { console.log('You click "Delete" button'); }}>Delete</Button>
-                        <Button icon="eye" className="flat" onClick={() => { console.log('You click "Preview" button'); }}>Preview</Button>
+                        <Button id="btn-edit" icon="edit" className="flat" onClick={onEditClick}>Edit</Button>
+                        <Button id="btn-delete" icon="delete" className="flat" onClick={onDeleteClick}>Delete</Button>
+                        <Button id="btn-eye" icon="eye" className="flat" onClick={onPreviewClick}>Preview</Button>
                     </div>
                 </div>
                 <List data={adDetail} config={detailConfig} />
