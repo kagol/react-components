@@ -1,4 +1,4 @@
-.header{ display: flex; justify-content: space-between; align-items: center; height: 80px; position: fixed; top: 0; left: 0; padding: 0 30px; }
+.header{ display: flex; justify-content: space-between; align-items: center; height: 80px; position: fixed; top: 50px; left: 0; padding: 0 30px; }
 .breadcrumb-area .breadcrumb-current{ font-size: 16px; font-weight: bold; }
 .breadcrumb-area .breadcrumb-from{ display: inline-flex; }
 .breadcrumb-area .breadcrumb-from .breadcrumb{ margin-left: 10px; }
