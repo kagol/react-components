@@ -6,6 +6,7 @@ import App from './App';
 import PageAdDetail from './views/adDetail'
 import PageDatePicker from './views/demoPage/page-date-picker';
 import PageImageFilter from './views/demoPage/page-image-filter';
+import PageComponents from './views/components';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<Router history={browserHistory}>
@@ -13,6 +14,7 @@ ReactDOM.render(<Router history={browserHistory}>
         <IndexRoute component={PageAdDetail} />
         <Route path="date-picker" component={PageDatePicker} />
         <Route path="image-filter" component={PageImageFilter} />
+        <Route path="components" component={PageComponents} />
     </Route>
 </Router>, document.getElementById('root'));
 registerServiceWorker();

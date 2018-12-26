@@ -13,6 +13,7 @@ class App extends Component {
                 <li className={pathname==='/'?'active':''}><Link to="/">Ad Detail</Link></li>
                 <li className={pathname==='/date-picker'?'active':''}><Link to="/date-picker">Date Picker</Link></li>
                 <li className={pathname==='/image-filter'?'active':''}><Link to="/image-filter">Image Filter</Link></li>
+                <li className={pathname==='/components'?'active':''}><Link to="/components">Components</Link></li>
             </ul>
         </div>
         <div className="main-content">

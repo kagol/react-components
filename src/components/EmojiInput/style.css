@@ -1,0 +1,8 @@
+.emoji-input-container { position: relative; }
+.emoji-input-container .emoji-editor {
+    width: 100%; padding: 6px 35px 6px 6px; line-height: 20px; border: 1px solid #d2dbe3; border-radius: 2px; background-color: #fff; color: #000;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; outline: none;
+}
+.emoji-input-container .emoji-editor:focus { border: solid 1px #4199f6; }
+.emoji-input-container .btn-emoji { position: absolute; top: 8px; right: 10px; font-size: 18px; }
+.emoji-input-container .btn-emoji:hover { cursor: pointer; }
