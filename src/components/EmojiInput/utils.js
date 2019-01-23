@@ -27,8 +27,11 @@ export const setCaratTo = (contentEditableElement, position) => {
     if(document.createRange) { // Firefox, Chrome, Opera, Safari, IE 9+
         range = document.createRange();
         range.selectNodeContents(contentEditableElement);
-        //range.collapse(true);
         
+        console.log('contentEditableElement:', contentEditableElement);
+        console.log('contentEditableElement.firstChild:', contentEditableElement.firstChild);
+        console.log('position:', position);
+        console.log('range:', range);
         range.setStart(contentEditableElement.firstChild, position);
         range.setEnd(contentEditableElement.firstChild, position)
 
