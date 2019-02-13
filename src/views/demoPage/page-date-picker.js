@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as babelParser from "@babel/parser";
 import traverse from "babel-traverse";
+import { Editor, EditorState, convertFromHTML } from 'draft-js';
 import DatePicker from '../../components/DatePicker';
 
 class PageDatePicker extends Component {
@@ -33,6 +34,26 @@ class PageDatePicker extends Component {
         // }
       }
     });
+
+    const sampleMarkup =
+    '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
+    '<a href="https://www.facebook.com">Example link</a><br /><br/ >' +
+    '<img src="https://raw.githubusercontent.com/facebook/draft-js/master/examples/draft-0-10-0/convertFromHTML/image.png" height="112" width="200" />';
+
+    const blocksFromHTML = convertFromHTML(sampleMarkup);
+    // const state = ContentState.createFromBlockArray(
+    //   blocksFromHTML.contentBlocks,
+    //   blocksFromHTML.entityMap,
+    // );
+    console.log('blocksFromHTML:', blocksFromHTML);
+    // console.log('state:', state);
+
+    // this.state = {
+    //   editorState: EditorState.createWithContent(
+    //     state,
+    //     decorator,
+    //   ),
+    // };
 
     return (
       <div className="page-date-picker">
